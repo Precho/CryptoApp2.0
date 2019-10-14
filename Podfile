@@ -8,5 +8,6 @@ target 'Api' do
  pod 'SwiftyJSON'
  pod 'Alamofire'
  pod 'SVProgressHUD'
+ pod 'SwipeCellKit', '2.6.0'
 
 end

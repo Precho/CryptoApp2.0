@@ -2,23 +2,27 @@ PODS:
   - Alamofire (4.8.2)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.0)
+  - SwipeCellKit (2.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - SVProgressHUD
   - SwiftyJSON
+  - SwipeCellKit (= 2.6.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - SVProgressHUD
     - SwiftyJSON
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwipeCellKit: 935ca28c187ec6e1ffb2b578cf8ddca842bfdcbb
 
-PODFILE CHECKSUM: 7b77328f4713a67b156a1207ceda1f743f99a3b2
+PODFILE CHECKSUM: e779a4f53f80991ac1d6fae888e470b38081b7a3
 
 COCOAPODS: 1.7.3

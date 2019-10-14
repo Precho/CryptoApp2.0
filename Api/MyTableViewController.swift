@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
-
+import SwipeCellKit
 class MyTableViewController: UITableViewController {
    
     @IBOutlet var reloadButton: UIButton!
@@ -28,6 +28,7 @@ class MyTableViewController: UITableViewController {
 //            debugPrint(response)
    
     }
+ 
     
     func parseJson(json : JSON) {
         
@@ -59,17 +60,28 @@ class MyTableViewController: UITableViewController {
         return priceArray.count
         
     }
+    // SwipeCellKIT DELEGATE
+    //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! SwipeTableViewCell
+    //        cell.delegate = self
+    //        return cell
+    //    }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! SwipeTableViewCell
+        cell.delegate = self
         cell.textLabel?.text = String(priceArray[indexPath.row])
         cell.imageView?.image = UIImage(named: cryptoImageArray[indexPath.row])
         
+        
         return cell
         
+    }
+    // Row height
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
     func request() {
         SVProgressHUD.show()
@@ -97,3 +109,20 @@ class MyTableViewController: UITableViewController {
     }
 }
 
+// Swipe delegejttt
+extension MyTableViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            self.priceArray.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete-ic")
+        
+        return [deleteAction]
+    }
+    
+}
