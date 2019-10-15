@@ -26,6 +26,7 @@ class MyTableViewController: UITableViewController {
         request()
 //        Alamofire.request(url).response { response in
 //            debugPrint(response)
+        
    
     }
  
@@ -103,6 +104,13 @@ class MyTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        
+        priceArray.removeAll()
+        request()
+        sender.endRefreshing()
+        
+    }
     @IBAction func ReloadData(_ sender: Any) {
         priceArray.removeAll()
         request()
