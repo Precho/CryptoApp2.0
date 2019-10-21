@@ -103,7 +103,7 @@ class MyTableViewController: UITableViewController {
                 }
         }
     }
-    
+    // refresh by swipe
     @IBAction func refresh(_ sender: UIRefreshControl) {
         
         priceArray.removeAll()
